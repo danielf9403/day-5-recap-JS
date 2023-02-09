@@ -96,10 +96,33 @@ class TV extends CabeleChannels {
     configureChannelslToTv(){}
 }
 
-const localNetwork = new CabeleChannels ("North Carolina", 50);
+class SuperTv extends TV{
+    constructor(){
+        super();
+        this.storage = [];
 
+    }
+
+    startRecording(recordLength) {
+        let recored = 0;
+        while(recored < recordLength){
+            this.storage.push("01110000101010111");
+            console.log("Recording.....");
+            recored += 1; 
+        }
+        console.log("Recording is finished")
+    }
+
+    playRecording() {
+        console.log(this.storage)
+    }
+}
+
+// const localNetwork = new CabeleChannels ("North Carolina", 50);
+const SonyTv = new SuperTv();
 const BasicTv = new TV("80 in", "TLC", "4k", "Space Gray" );
 
 BasicTv.showChannels();
-BasicTv.inializeChannels();
+BasicTv.inializeChannels("North Carolina", 50);
 BasicTv.showChannels();
+SonyTv.startRecording(60);
